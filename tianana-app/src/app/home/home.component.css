@@ -1,0 +1,46 @@
+.home-main {
+    position: relative;
+    height: 40vw;
+}
+
+.tia {
+    font-size: 8vw;
+    position: absolute;
+    z-index: -1;
+    left: 25%;
+}
+
+.home-img {
+    position: absolute;
+    width: 40vw;
+    margin-left: 25%;
+    z-index: 0;
+}
+
+.nana {
+    font-size: 8vw;
+    position: absolute;
+    right: 20%;
+    bottom: 5vw;
+    z-index: 1px;
+}
+
+@media only screen and (max-width: 600px) {
+    .home-main { 
+        height: 100vw; 
+    }
+    .tia{
+        font-size: 24vw;
+        margin: 0 auto;
+    }
+    .home-img {
+        margin-top: 10vw;
+        margin-left: 10%;
+        width: 70vw;
+    }
+    .nana{
+        font-size: 24vw;
+        margin: 0 auto;
+        bottom: 18vw;
+    }
+}

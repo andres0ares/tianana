@@ -1,0 +1,40 @@
+.pr-card-bg{
+    color: #e8eef3;
+    font-size: 5.5rem;
+    position: absolute;
+    bottom: 5px;
+    z-index: -1;
+}
+
+.pr-card {height: 200px;}
+
+.card-product {
+    margin: 30px 50px 0 50px;
+}
+.pr-card-image {
+    position: absolute;
+    margin-right: 50px;
+    height: 200px;
+    right: 1px;
+}
+
+.pr-card-description {
+    top: 40px;
+    margin-left: 10px;
+    margin-right: 100px;
+    position: absolute;
+    z-index: 0;
+}
+
+.pr-card-name {
+    position: absolute;
+    top: 5px;
+    margin-left: 10px;
+    z-index: 0;
+}
+
+.pr-card-price {
+    position: absolute;
+    margin-left: 10px;
+    bottom: 5px;
+}
