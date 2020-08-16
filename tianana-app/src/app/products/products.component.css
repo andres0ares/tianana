@@ -1,40 +1,47 @@
 .pr-card-bg{
-    color: #e8eef3;
+    color: white;
     font-size: 5.5rem;
     position: absolute;
-    bottom: 5px;
-    z-index: -1;
+    margin-left: -10%;
+    bottom: 2vw;
+    z-index: 0;
 }
 
-.pr-card {height: 200px;}
-
-.card-product {
-    margin: 30px 50px 0 50px;
-}
 .pr-card-image {
     position: absolute;
+    padding-top: 45px;
     margin-right: 50px;
-    height: 200px;
-    right: 1px;
+    height: 23vw;
+    z-index: 2;
 }
-
-.pr-card-description {
-    top: 40px;
-    margin-left: 10px;
-    margin-right: 100px;
-    position: absolute;
-    z-index: 0;
+.pr-card-image:hover {
+    height: 28vw;
 }
 
 .pr-card-name {
     position: absolute;
     top: 5px;
     margin-left: 10px;
-    z-index: 0;
+    z-index: 1;
 }
 
 .pr-card-price {
     position: absolute;
     margin-left: 10px;
     bottom: 5px;
+    z-index: 1;
+}
+
+.card-prod {
+    position: relative;
+    margin: 30px 4%;
+    border-radius: 10px;
+    background-color: #e8eef3;
+    
+}
+.card-pro {
+    height: 30vw;
+    position: relative;
+    margin: 30px 5%;
+    
 }

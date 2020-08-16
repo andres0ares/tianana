@@ -1,14 +1,25 @@
+<!-- Destaques -->
+
 <section class="container">
-
-    <!-- Destaques -->
-    <section>
-        <div class="row">
-            <div class="col col- home-main">
-                <h1 class="tia">TIA</h1>
-                <img class="home-img" src="https://www.basementskate.com.au/images/P/diamond-aloha-fanny-pack-bum-bag.png" alt="">
-                <h1 class="nana">NANA</h1>
-            </div>
+    <div class="row">
+        <div class="col col- home-main">
+            <h1 class="tia">TIA</h1>
+            <img class="home-img" src="https://www.basementskate.com.au/images/P/diamond-aloha-fanny-pack-bum-bag.png" alt="">
+            <h1 class="nana">NANA</h1>
         </div>
-    </section>
-
+    </div>
 </section>
+
+<!-- Produtos -->
+
+<div *ngFor="let product of products">
+    <div class="col col-12 col-md-5 col-lg-3 card-prod float-left">
+        <div class="card-pro">
+            <h1 class="pr-card-bg">{{ product.name }}</h1>
+            <h2 class="pr-card-name">{{ product.name }}</h2>
+            <h2 class="pr-card-price">R$ {{ product.price}}</h2>
+            <img class="pr-card-image" src="{{ product.image }}" alt="{{ product.name }}">
+        </div>            
+    </div>
+</div>
+
