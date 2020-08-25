@@ -12,14 +12,37 @@
 
 <!-- Produtos -->
 
-<div *ngFor="let product of products">
+<div class="produtos" *ngFor="let product of products">
+
     <div class="col col-12 col-md-5 col-lg-3 card-prod float-left">
         <div class="card-pro">
+            <div class="test"></div>     
             <h1 class="pr-card-bg">{{ product.name }}</h1>
             <h2 class="pr-card-name">{{ product.name }}</h2>
             <h2 class="pr-card-price">R$ {{ product.price}}</h2>
+            <span class="pr-card-share"><a href="/products">+</a></span>
             <img class="pr-card-image" src="{{ product.image }}" alt="{{ product.name }}">
-        </div>            
+        </div> 
+              
     </div>
 </div>
+
+<section class="options">
+    <div class="container">
+        <div class="opt-card-prod">
+            <div class="bg-opt-card">
+                
+            </div> 
+            <img class="opt-card-image" src="{{ products[0].image }}" alt="{{ products[0].name }}">
+             
+        </div>
+        <div class="opt-card-info">
+            <h1 class="pr-card-bg">{{ products[0].name }}</h1>
+            <h2 class="opt-card-name">{{ products[0].name }}</h2>
+            <h4>{{ products[0].description }}</h4>
+            <h2 class="pr-card-price">R$ {{ products[0].price}}</h2>
+        </div>
+        
+    </div>
+</section>
 
