@@ -219,17 +219,35 @@ h4 {
         margin: 0 auto;
         bottom: 18vw;
     }
+    .pr-card-bg{
+        font-size: 4rem;
+    }
     .pr-card-image {
-        height: 83vw;
+        height: 65vw;
         margin-right: 0;
         
     }
     .pr-card-image:hover {
-        height: 88vw;
+        height: 65vw;
     }
     .card-pro {
-        margin: 30px 10px;
+        margin: 0;
         height: 110vw;
         
+    }
+    .container {
+        padding: 0 30px;
+    }
+    .test {
+        text-align: right;
+        width: 122%;
+        height: 100%;
+        border-radius: 10px;
+        position: absolute;
+        margin: 0 0 0 -18%;
+        background-color: yellowgreen;
+        clip-path: circle(150px at 80% 20%);
+        z-index: 0;
+    
     }
 }

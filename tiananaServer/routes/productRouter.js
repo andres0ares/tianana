@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 
 const Products = require('../models/product');
 const { findById } = require('../models/product');
+var authenticate = require('../authenticate');
 
 const productRouter = express.Router();
 
@@ -19,7 +20,7 @@ productRouter.route('/')
     }, (err) => next(err))
     .catch((err) => next(err));
 })
-.post((req, res, next) => {
+.post(authenticate.verifyUser, (req, res, next) => {
     Products.create(req.body)
         .then((Product) => {
             console.log('Product Created ', Product);
@@ -29,11 +30,11 @@ productRouter.route('/')
         },  (err) => next(err))
         .catch((err) => next(err));
 })
-.put((req, res, next) => {
+.put(authenticate.verifyUser, (req, res, next) => {
     res.statusCode = 403;
     res.end(`PUT operation not supported on /products`);
 })
-.delete((rep, res, next) => {
+.delete(authenticate.verifyUser, (rep, res, next) => {
     Products.remove({})
         .then((resp) => {
             res.statusCode = 200;
@@ -54,11 +55,11 @@ productRouter.route('/:productId')
         }, (err) => next(err))
         .catch((err) => next(err))
 })
-.post((req, res, next) => {
+.post(authenticate.verifyUser, (req, res, next) => {
     res.statusCode = 434;
     res.end(`POST method not supported on ${req.params.productId}.`);
 })
-.put((req, res, next) => {
+.put(authenticate.verifyUser, (req, res, next) => {
     Products.findByIdAndUpdate(req.params.productId, {
         $set: req.body
     }, {new: true})
@@ -69,7 +70,7 @@ productRouter.route('/:productId')
         }, (err) => next(err))
         .catch((err) => next(err));        
 })
-.delete((req, res, next) => {
+.delete(authenticate.verifyUser, (req, res, next) => {
     Products.findByIdAndDelete(req.params.productId)
         .then((product) => {
             res.sendStatus = 200;
@@ -97,7 +98,7 @@ productRouter.route('/:productId/options')
         }, (err) => next(err))
         .catch((err) => next(err))
 })
-.post((req, res, next) => {
+.post(authenticate.verifyUser, (req, res, next) => {
     Products.findById(req.params.productId)
         .then((product) => {
             product.options.push(req.body)
@@ -113,11 +114,11 @@ productRouter.route('/:productId/options')
         }, (err) => next(err))
         .catch((err) => next(err));
 })
-.put((req, res, next) => {
+.put(authenticate.verifyUser, (req, res, next) => {
     res.sendStatus = 403;
     res.end(`PUT Operation not supported on /products/${req.params.productId}/options`);
 })
-.delete((req, res, next) => {
+.delete(authenticate.verifyUser, (req, res, next) => {
     Products.findById(req.params.productId)
         .then((product) => {
             product.options = [];
@@ -154,12 +155,12 @@ productRouter.route('/:productId/options/:optionId')
         },  (err) => next(err))
         .catch((err) => next(err));
 })
-.post((req,res,next) => {
+.post(authenticate.verifyUser, (req,res,next) => {
     res.statusCode = 403;
     res.end(`POST operation not supported on /products/` + req.params.productId 
         + '/options' + req.params.optionId);
 })
-.put((req, res, next) => {
+.put(authenticate.verifyUser, (req, res, next) => {
     Products.findById(req.params.productId)
         .then((product) => {
             if (req.body.name) {
@@ -183,7 +184,7 @@ productRouter.route('/:productId/options/:optionId')
         }, (err) => next(err))
         .catch((err) => next(err));
 })
-.delete((req, res, next) => {
+.delete(authenticate.verifyUser, (req, res, next) => {
 
     Products.findById(req.params.productId)
         .then((product) => {
