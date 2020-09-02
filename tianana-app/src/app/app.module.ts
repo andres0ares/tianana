@@ -13,6 +13,8 @@ import { RegistrarComponent } from './registrar/registrar.component';
 import { ProductdetailComponent } from './productdetail/productdetail.component';
 
 import { ProductService } from './services/product.service';
+import { ProcessHTTPMsgService } from './services/process-httpmsg.service';
+import { UsersService } from './services/users.service';
 import { baseURL } from '../shared/baseURL';
 
 @NgModule({
@@ -33,6 +35,8 @@ import { baseURL } from '../shared/baseURL';
   ],
   providers: [
     ProductService, 
+    ProcessHTTPMsgService,
+    UsersService,
     {provide: 'BaseURL', useValue: baseURL}
   ],
   bootstrap: [AppComponent]
