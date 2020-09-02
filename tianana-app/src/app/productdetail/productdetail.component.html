@@ -1,1 +1,21 @@
-<p>productdetail works!</p>
+<section class="container">
+
+    <div class="row">
+        <div class="col col-12 col-lg-4">
+            <img class="principal-img" src="{{product.image}}" alt="{{product.name}}">
+        </div>
+        <div class="col col-12 col-lg-4">
+            <img class="principal-opt" src="{{product.image}}" alt="{{product.name}}">
+            <h1>Test</h1>
+        </div>
+        <div class="col col-12 col-lg-4">
+            <h1>{{product.name}}</h1>
+        </div>
+    </div>
+
+    <div fxFlex *ngIf="errMess">
+        <h2>Error</h2>
+        <h4>{{errMess}}</h4>
+      </div>
+    
+</section>
