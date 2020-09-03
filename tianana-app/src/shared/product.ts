@@ -16,6 +16,7 @@ export class Product {
     category: String;
     shortDescription: String;
     image: String;
+    images: String[];
     bgImage: String;
     options: Option[];
 }

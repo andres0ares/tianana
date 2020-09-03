@@ -35,22 +35,38 @@
       "featured": true,
       "category": "Pochetes",
       "shortDescription": "Pochete Personalizada com a estampa de flores.",
-      "image": "https://www.basementskate.com.au/images/P/diamond-aloha-fanny-pack-bum-bag.png",
+      "image": "../assets/img/imagePochete1.png",
+      "images": [ "../assets/img/imagePochete1.png", "../assets/img/imagePochete2.png", "../assets/img/imagePochete3.png",
+        "../assets/img/imagePochete4.png", "../assets/img/imagePochete5.png"],
       "bgImage": "../assets/images/gravata01bg",
       "options": [
         {
           "id": "0",
-          " name": "Flores",
-          "color": "Azul",
-          "fabric": "Xita",
-          "image": "../assets/images/gravata01bg"
+          "name": "Nike",
+          "color": "Preta",
+          "fabric": "Algodão",
+          "image": "../assets/img/option1.jpg"
         },
         {
           "id": "1",
-          "name": "Marvel",
-          "color": "Vermelha",
-          "fabric": "Xita",
-          "image": "../assets/images/gravata01bg"
+          "name": "Fila",
+          "color": "Preta",
+          "fabric": "Algodão",
+          "image": "../assets/img/option2.jpg"
+        },
+        {
+          "id": "2",
+          "name": "Fila",
+          "color": "Amarela",
+          "fabric": "Algodão",
+          "image": "../assets/img/option3.jpg"
+        },
+        {
+          "id": "3",
+          "name": "Neon",
+          "color": "Multicolorida",
+          "fabric": "Algodão",
+          "image": "../assets/img/option4.jpg"
         }
       ]
     },

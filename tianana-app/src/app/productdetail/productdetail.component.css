@@ -3,7 +3,46 @@
     margin: 0 auto;
 }
 
+.demo {
+    width: 100%;
+    opacity: 0.6;
+}
+
+.demoSelected {
+    width: 100%;
+    border-radius: 50%;
+}
+.demoOpt {
+    width: 100%;
+    border-radius: 50%;
+    filter: brightness(70%);
+}
+.demoOpt:hover {
+    filter: brightness(90%);
+}
+
+.demo:hover {
+    opacity: 1;
+}
+
+.price {
+    margin: 15px 0;
+    color: chartreuse;
+}
+
+.btn {
+    margin: 15px 15px;
+}
+
+.info {
+    margin: auto 0;
+}
+
+.options {
+    margin: 20px auto;
+}
+
 .principal-opt {
-    width: 70%;
+    width: 90%;
     margin: 0 auto;
 }

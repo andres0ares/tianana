@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 
 import { Product } from '../../shared/product';
-import { PRODUCTS } from '../../shared/products';
 import { ProcessHTTPMsgService } from '../services/process-httpmsg.service';
 
 import { Observable } from 'rxjs'

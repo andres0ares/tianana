@@ -1,21 +1,42 @@
 <section class="container">
 
     <div class="row">
-        <div class="col col-12 col-lg-4">
-            <img class="principal-img" src="{{product.image}}" alt="{{product.name}}">
+        <div class="col col-12 col-md-6">
+            <div class="row">
+                <img class="principal-img" src="{{ principalImage }}" alt="{{ product.name }}">
+            </div>
+            <div class="row">
+                <div class="col col-2 col-sm-2" *ngFor=" let image of product.images " (click)="imgClicked(image)">
+                    <img class="demo" src="{{ image }}" alt=" {{ image }} ">
+                </div>
+            </div>
+            
         </div>
-        <div class="col col-12 col-lg-4">
-            <img class="principal-opt" src="{{product.image}}" alt="{{product.name}}">
-            <h1>Test</h1>
-        </div>
-        <div class="col col-12 col-lg-4">
-            <h1>{{product.name}}</h1>
+        <div class="col col-12 col-md-6 info">
+            <h1>{{ product.name | uppercase }}</h1>
+            <h4>{{ product.shortDescription }}</h4>
+            <h6>{{ product.description }}</h6>
+            <h3 class="price">R$ {{ product.price }}</h3>
+            <p>{{ optionInfo }}</p>
+            <div class="row options">
+                <div class="col col-2 col-sm-2" *ngFor=" let option of product.options " (click)="optionClicked(option)">
+                    <img class="demoOpt" src="{{ option.image }}" alt=" {{ option.name }} "> 
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-2 col-sm-2" [hidden]="!selection.selected">
+                    <img class="demoSelected" src="{{ selection.image }}" alt=" {{ selection.name }} "> 
+                </div>
+                <button class="btn btn-primary" (click)="onSubmit()"> Encomendar </button>
+            </div>
+            
         </div>
     </div>
 
     <div fxFlex *ngIf="errMess">
         <h2>Error</h2>
         <h4>{{errMess}}</h4>
-      </div>
+    </div>
+
     
 </section>
