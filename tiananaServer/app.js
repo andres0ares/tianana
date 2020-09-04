@@ -8,6 +8,7 @@ var indexRouter = require('./routes/index');
 var userRouter = require('./routes/users');
 var productRouter = require('./routes/productRouter');
 var promotionRouter = require('./routes/promotionRouter');
+var pedidoRouter = require('./routes/pedidoRouter');
 
 var passport = require('passport');
 var authenticate = require('./authenticate');
@@ -27,6 +28,16 @@ connect.then((db) => {
     console.log("Connected correctly to server");
 }, (err) => { console.log(err); });
 
+// Secure traffic only
+app.all('*', (req, res, next) => {
+  if (req.secure) {
+    return next();
+  }
+  else {
+    res.redirect(307, 'https://' + req.hostname + ':' + app.get('secPort') + req.url);
+  }
+});
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -45,6 +56,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/products', productRouter);
 app.use('/promotions', promotionRouter);
+app.use('/pedidos', pedidoRouter )
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

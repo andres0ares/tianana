@@ -11,7 +11,7 @@ userRouter.use(bodyParser.json());
 
 userRouter.route('/')
 .options((req, res) => { res.sendStatus(200); })
-.get((req, res, next) => {
+.get(authenticate.verifyUser, authenticate.verifyAdmin, (req, res, next) => {
   User.find({})
     .then((users) => {
       res.statusCode = 200;
