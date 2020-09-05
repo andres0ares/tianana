@@ -12,7 +12,7 @@ promotionRouter.route('/')
 .options(cors.corsWithOptions, (req, res) => { res.sendStatus(200); })
 .get(cors.cors, (req, res, next) => {
     
-    Promotion.find({})
+    Promotion.find(req.query)
         .then((promotions) => {
             res.statusCode = 200;
             res.setHeader('Content_Type', 'application/json');
@@ -39,7 +39,7 @@ promotionRouter.route('/')
 })
 .delete(cors.corsWithOptions, authenticate.verifyUser, authenticate.verifyAdmin, (req, res, next) => {
 
-    Promotion.remove({})
+    Promotion.remove(req.query)
         .then((promotion) => {
             res.statusCode = 200;
             res.setHeader('Content_type', 'application/json');

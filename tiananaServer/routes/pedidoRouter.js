@@ -13,7 +13,7 @@ pedidoRouter.route('/')
 .get(cors.cors, authenticate.verifyUser, (req, res, next) => {
     
     if(req.user.admin){
-        Pedidos.find({})
+        Pedidos.find(req.query)
         .populate('user')
         .populate('product')
             .then((pedidos) => {
@@ -114,10 +114,23 @@ pedidoRouter.route('/:pedidoId')
     .populate('user')
     .populate('product')
         .then((pedido) => {
-            res.statusCode = 200;
-            res.setHeader('Content_Type', 'application/json');
-            console.log(pedido);
-            res.json(pedido.pedidos.find(element => element._id = req.params.pedidoId));
+            if (!pedido) {
+                res.statusCode = 200;
+                res.setHeader('Content-Type', 'application/json');
+                return res.json({"exists": false, "pedidos": pedido});
+            }
+            else {
+                if (pedido.pedidos.findIndex(element => element._id = req.params.pedidoId) < 0) {
+                    res.statusCode = 200;
+                    res.setHeader('Content-Type', 'application/json');
+                    return res.json({"exists": false, "pedidos": pedido});
+                }
+                else {
+                    res.statusCode = 200;
+                    res.setHeader('Content-Type', 'application/json');
+                    return res.json({"exists": true, "pedidos": pedido});
+                }
+            }
         }, (err) => next(err))
         .catch((err) => next(err));
 })
