@@ -10,9 +10,9 @@ const cors = require('./cors');
 var userRouter = express.Router();
 userRouter.use(bodyParser.json());
 
-userRouter.route('/')
-.options(cors.corsWithOptions, (req, res) => { res.sendStatus(200); })
-.get(cors.cors, authenticate.verifyUser, authenticate.verifyAdmin, (req, res, next) => {
+userRouter.options('*', cors.corsWithOptions, (req, res) => { res.sendStatus(200); });
+
+userRouter.get('/', cors.cors, authenticate.verifyUser, authenticate.verifyAdmin, (req, res, next) => {
   User.find({})
     .then((users) => {
       res.statusCode = 200;

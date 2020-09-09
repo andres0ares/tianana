@@ -26,6 +26,7 @@ export class AuthService {
   tokenKey = 'JWT';
   isAuthenticated: Boolean = false;
   username: Subject<string> = new Subject<string>();
+  admin: Subject<boolean> = new Subject<boolean>();
   authToken: string = undefined;
 
   constructor(private http: HttpClient,
@@ -36,6 +37,7 @@ export class AuthService {
      .subscribe(res => {
        console.log('JWT Token Valid: ', res);
        this.sendUsername(res.user.username);
+       this.sendAdmin(res.user.admin);
      },
      err => {
        console.log('JWT Token invalid: ', err);
@@ -51,6 +53,15 @@ export class AuthService {
     this.username.next(undefined);
   }
 
+  sendAdmin(admin: boolean) {
+    this.admin.next(admin);
+  }
+
+  clearAdmin() {
+    this.admin.next(undefined);
+  }
+
+
   loadUserCredentials() {
     const credentials = JSON.parse(localStorage.getItem(this.tokenKey));
     console.log('loadUserCredentials ', credentials);
@@ -63,7 +74,8 @@ export class AuthService {
   }
 
   storeUserCredentials(credentials: any) {
-    console.log('storeUserCredentials ', credentials);
+    console.log('storeUserCredentials ');
+    localStorage.setItem('token ', credentials.token.toString());
     localStorage.setItem(this.tokenKey, JSON.stringify(credentials));
     this.useCredentials(credentials);
   }
@@ -77,6 +89,7 @@ export class AuthService {
   destroyUserCredentials() {
     this.authToken = undefined;
     this.clearUsername();
+    this.clearAdmin();
     this.isAuthenticated = false;
     localStorage.removeItem(this.tokenKey);
   }
@@ -105,6 +118,10 @@ export class AuthService {
 
   getUsername(): Observable<string> {
     return this.username.asObservable();
+  }
+
+  getAdmin(): Observable<boolean> {
+    return this.admin.asObservable();
   }
 
   getToken(): string {

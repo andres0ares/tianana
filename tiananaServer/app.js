@@ -15,8 +15,10 @@ var authenticate = require('./authenticate');
 
 var config = require('./config');
 
-
 var app = express();
+
+var cors = require('cors');
+app.use(cors());
 
 const mongoose = require('mongoose');
 
